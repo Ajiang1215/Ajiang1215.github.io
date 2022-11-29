@@ -2,7 +2,7 @@
 <html>
 	<head>
 		
-<title>Hello World-Quiet</title>
+<title>docker安装-Quiet</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -114,7 +114,7 @@
 	</div>
 	<div class="sidebar">
     <div class="topo">
-        <h2>Joey</h2>
+        <h2>ajiang</h2>
     </div>
     <ul>
         
@@ -284,7 +284,7 @@
             
         </ul>
         
-        <h1>Hello World</h1>
+        <h1>docker安装</h1>
         <div class="post-header-info">
             <div class="post-header-info-author">
                 
@@ -295,11 +295,11 @@
                             p-id="2902" fill="#ffffff"></path>
                     </svg>
                     
-                <span class="post-header-info-author-text"> <a href="../../about">Joey</a></span>
+                <span class="post-header-info-author-text"> <a href="../../about">ajiang</a></span>
                 <div class="post-header-info-author-categories">
                     
                 </div>
-                <p>2022-11-28 14:32:46</p>
+                <p>2022-11-28 18:48:46</p>
             </div>
         </div>
     </div>
@@ -309,19 +309,43 @@
   <div id="article" class="post-content-info">
     
 
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <h1>如何安装docker</h1>
+一、安装依赖
+<pre><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>二、配置yum源 使用国内的</p>
+<pre><code>yum-config-manager --add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docker-ce&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>三、安装docker</p>
+<pre><code>yum -y install docker-ce-20.10.17-3.el7</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>四、启动docker</p>
+<pre><code>systemctl start docker</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+<p>五、查看docker启动状态</p>
+<pre><code>systemctl status docker</code></pre>
+
+
+<p>常用指令</p>
+<pre><code>systemctl start docker       #运行Docker守护迸程
+systemctl stop docker        #停止Docker守护进程
+systemctl restart docker     #重启Docker守护进程
+docker ps                    查看容器
+docker stop                  停止
+docker ps -a                 查看没有启动的容器
+docker images                镜像查看</code></pre>
+
+
+
+<p>之后为了装mysql了修改镜像仓库</p>
+<pre><code>vim &#x2F;etc&#x2F;docker&#x2F;daemon.json</code></pre>
+<p>json文件中改为下面内容，然后重启docker,注意不能有空格！引号,逗号都要是英文状态！</p>
+<pre><code>{
+&quot;debug&quot;: true,&quot;experimental&quot;: true,
+&quot;registry-mirrors&quot;:[&quot;https:&#x2F;&#x2F;pb5bklzr.mirror.aliyuncs.com&quot;,&quot;https:&#x2F;&#x2F;hub-mirror.c.163.com&quot;,&quot;https:&#x2F;&#x2F;docker.mirrors.ustc.edu.cn&quot;]
+}</code></pre>
+
 
   </div>
   <div id="gitalk-container"></div>
@@ -389,7 +413,7 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 		
 <div class="footer">
 	<div class="Copyright">
-		©2022 By Joey. 主题：<a
+		©2022 By ajiang. 主题：<a
 			style="text-decoration: none;display: contents; color: #898F9F;"
 			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
 	</div>
